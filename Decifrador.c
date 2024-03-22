@@ -32,7 +32,12 @@ void decifrarForcaBruta(char texto[], int texto_len) {
     char texto_decifrado[MAX_SIZE];
     char chave[MAX_SIZE];
     char melhor_decifrado[MAX_SIZE];
+    char melhor_chave[MAX_SIZE];
     int melhor_pontuacao = 0;
+
+    printf("\n\n\t\t\t===================================================");
+    printf("\n\n\t\t\tAGUARDE UM INSTANTE, SEU TEXTO ESTA SENDO DECIFRADO");
+    printf("\n\n\t\t\t===================================================");
 
     for (int k = 1; k <= 4; k++) { // Supondo que a chave tenha no máximo 4 caracteres
         for (int i = 0; i < k; i++) {
@@ -61,6 +66,7 @@ void decifrarForcaBruta(char texto[], int texto_len) {
             if (pontuacao > melhor_pontuacao) {
                 melhor_pontuacao = pontuacao;
                 strcpy(melhor_decifrado, texto_decifrado);
+                strcpy(melhor_chave, chave);
             }
 
             // Atualizar a chave para a próxima combinação
@@ -75,17 +81,120 @@ void decifrarForcaBruta(char texto[], int texto_len) {
         } while (1);
     }
 
+    system("cls");
+
+    printf("\t\t\t================================================");
+    // Mostrar a chave utilizada
+    printf("\n\n\t\tCHAVE UTILIZADA PARA DECIFRAR O TEXTO: %s\n", melhor_chave);
     // Imprimir o melhor resultado encontrado
-    printf("Texto decifrado mais provável:\n%s\n", melhor_decifrado);
+    printf("\n\n\t\tTEXTO DECIFRADO MAIS PROVAVEL:\n\n%s\n", melhor_decifrado);
+    printf("\n\t\t\t================================================"); 
 }
 
-int main() {
+// Obtem a mensagem a ser decifrada
+char* obterMensagem(){
+    static char texto[MAX_SIZE]; // Definindo como static para evitar problemas de escopo
     
-    char texto[MAX_SIZE] = "Ixbpsrmrho a Qynps hae Zmasirs Hmejmv i uye hae ibpqvmezgmae qeie irruuyeoihodew qgi topiqoe xir ze zipe. Gape zimkim q yqa vsvnmhe uzmga, ditlqxe dq hisosfedxes, mzinfyvae i qoyirtaw mnqwuuqgmvqmw. Dqwhe qbtlaver mw qadezixles zexudems mxi mqvkuxler zew cgpxudew e fvedugsee pscmmw, o yyrda iwtm gleus he xykadiw fmwgizertqw isbivazhs pmve sqvim qbtlavedaw. Ymm hes rsvmmw qauw imagmozertqw he hmejmv i eyferoev ey yqa vsvnmhe pqpe nmxyrqde. Dq gemurlapew pqpes fvmltew ejyfedertqw hae jpodiwtmw xratmcmmw afi isoepapew aaw tiosw dmw qaviwtawes ysrtmrlae, e rafyvele sfqvicq yqa heviqhedq mrfurmtm hi pmmwasirs piwlgqfrmrxee term wirqq epdigimhes. A wsm pew cmgloqmvae, s ghqmvo pew fxsvee wmlhiwtdiw e m wineegaa hs vqrxo osrtde s rawxo ees abirae epggrw daw trmdirqw uuq ekumvhay sw vuenazxis qq fuege dq ezezxyrmw eo mv pihvi. Axiq dmw qadezixles zexudems, mw zimkine xemniq naw tedqmtqq qedkyltev nmw guxxyrmw i tdehiosis grmcmw he pmjedirtqw tadxis ps quzhs. Dq ibpxsvad sw tqqtlaw enfmkoe hs sghisfi esuexios etq terfmgibev dq jisfmzauw goxsvipsw nm Eqedmga Xexize, gape heexmna sjedige gqe obsvtgrmdmhi uzmga pi epdirdqv i cdiwcqv goys teewsa. Qbtedmqezxer zszoe webavis pe guxmradme lagel, percmv eo esq dm qysuge tdehiomsnmp i carzedwer osq oe lebuxenfiw lageie weo mtinmw elsyqae hes yereuves bipae uyauw topiqoe rss osreoxer osq ae gsmgrmdmhis cyi vuwmtmqss. Zs inferta, zmavev tmqfey tsdq wir gqe javrape mnfiviav. Pozki dm vsture da hma-m-hma, fiqoe e ghmrge pi verpituv wonvi nawwae zmdmw, roewss hepodiw e zswsaw sbvixihsw. Mgmxae zizqw, i dgvenfi ymm zmasiq qgi inosrtdeqoe e mnetmrmgeo beva yyhazges emknujmcmxmvmw im zswsmw zipew, sqne mghenps he oevrqmva, osqeoerda yq nazs rqpecusrayirta sy suqtlqwqezxi apsxazhs uye tedwteoxmvm qeie tssuxmvm iq rqpecms eo yyrda. Qisys uumrho hsptmqss beva oewa, mw peyfvazges pi roewes hmegqrw carxizyem m rss urwpuver. Mw jofsw qgi xideqoe, sw aymkoe uye rmdeysw e mw liexsruew qgi zihiqoe wi tavray xisayvoe tveomssaw uuq kyadhemaw tade weytve qq roewss osvaosis. Q, e qepmha cyi pxereveqoe rssee trabmmm ezezxyrm, wsmaw peyfvapsw dq uye a qynps i vmwxo q gleus he bswsufmluhedqw, isbivazhs pmve sqvim qbtlavedmw. Todxenfs, raa mqpavxa ei isfeqoe zmaverda term s sufvs lmhs da qynps su mtinmw ixbpsrmrho zswsm tvobvma omhapi, gape zimkim q yqa atsrfyripehe pi grqwgiyirta, hisosfedxe e osrejes. Ezxeo, heqoe tigmv roewes ysghupes, mfvid rssesw cavecaiw pmve o piwcarleomho q iqbmvgad re pdsbiye krmrhe mzinfyva cyi a hmha fiq a ajirqgir. A qynps isfe isbivazhs - vmqss qbtlave-la nynfsw! Ejtpoderda s Quzhs dmw Zimkine Zmavev e gqe dmw ixbiviqrgimw qauw indmuuqgidaves cyi pahimaw xed re vuhe. Cmhe vuekey i ymm nsrzeha grmcm, vipxixa pi heegsbqvxae, ezezxyrmw i maqinfsw iziwqgigihims. Piwdq ibpxsvad ew mmvevuplae retgveie exe yivggplad res oyptgves q xvapmgoqw pooems, a qynps isfe ghqms dq pygmvis rewcurenfiw eetirmrho beva eivey ibpxsvapsw. Uye hae jsryew mmmw eysgiarenfiw dq zmavev e qqfadger qq ymm nsrzeha bipa zexudida. Pi gaymrhmhes bipae xvixles qbybqvenfiw dmw jlavisfew tdstioems mxi eegelmhes msw pugss pew mmnisfswae qsnferhmw, e nmxyrqde oriveoi ymm zeruihapi mnrmrife he bemsmkine hisxyqbdertqw tade wediq abvicuehae. S woy hes oeghaimrmw, s ctimra hes rpsrqw wixzisfvis q e wezwecms ho hirta gsnfve o dswta weo mtinmw elsyrs psw pdedediw qgi eggevdmq ss hmejmrxee iq bgwga pi evqrxudew aa ev luzve. Mpim pew mmvevuplae retgveie, ew vuekezw xayfim zsw pqvqifiq mqvkuxler zew cgpxudew e fvedugsee yrioew dq hmfqvinfiw pmvxee hs mgrho. Pi ixbpsrmv ss fiqpxsw azxmgaw ho eyheexi aemetugs afi tadxmcuter pi jeexmvmmw capsruhss ze Emqvmcm Peture, cmhe dqwxizs sfqvicq yqa atsrfyripehe grmcm hi abvinpiv e ovisoiv caqs pqwwom. Ibpqvmmqrxad rsvaw wansvee he cgpmnmvma xsgax, henoev aa wsm pe quemga fvedugmozep e osrvqvwad gsm aw lanmxazxis xsgauw waa etezew axkymmw hae qenqmvae tilmw uummw pahimaw roe gsnqgxad gsm mw goyyripehee uye hmwifeqoe. Rs ezxenfs, zimner feqbqq topi wed yqa vsvnmhe izxirusv. Larke pe vofmra ps him-e-him, ximaw e ctercq hi rqjpefmv safve zswsmw zipew, nawwoe zelavis q rssesw onnituzss. Yymtmw zeliw, e pyvazxi uye zimkim cyi ezgsnfvemaw e izwtidegaa term qydmrgae wmgzmjioexihew ey rsseew vuhes, eina yyhazhs dq gerdimrm, gsmqgenps ym zszo dipaomsnmqinfs su emqpxiwmqrxe mhstmrho gqe pqvwpqgxihe qauw toemxihe im dipaoes aa qynps. Qeeqs qgerda zslfeqoe term gesm, ew lqqfrmrgae hi nawwae zmasirs osrturyay e roe mrsbmvad. Ew faxss cyi tuvemaw, ss mqmgaw uuq jmzqqss q ew huwxodmes cyi vuzimaw we fsvnmq xeesyraw trqgmoesw qgi kumvhaysw pmve sqqtrq iq nawwoe gsrmgsee. I, e mqhmdm uye bpenqnemaw roewe pdsbiye evqrxude, woysw lqqfrmhss pi uuq s quzhs e hewta i ghqms dq tssemfixmhapiw, eetirmrho beva eivey ibpxsvapew. Pavxazxs, nms mmbsvtm wi eexemaw zimnenps tade s ogxvo xeho ps quzhs og etezew ejtpoderda rssee tratvim gmdmhi, cmhe vuekey i ymm stodxynuhedq hi cdiwcuqinfs, heegsbqvxa q gsnqbeo. Qrxaa, zemaw tesev nawwae qsctmpae, efruv roewss osvaosis beva a hisosrhqgmda i imnevcmv ra bvsxuqe gderdq ezezxyrm uye m zmdm xim m sjediged. S quzhs eexe eetirmrho - heqoe ibpxsva-xs nuzxss! Qbtlavenps s Mgrho pew Vuekezw Zimner q yqa pew ejtiruircuew mmmw ezvmqgigepsvae uye bsheysw tqv ra hmha. Oeha hmegqq i uye nodredm yrioe, vebpitm hi dqwgonivtmw, evqrxudew e ysqezxss uriscyicuziie. Hispi ixbpsrmv es yevahmphmw rafyvauw etq qirsyphmv rae gylfyvae i xrmhmcaiw lageie, s quzhs eexe ctimo pi pusevee jesomrazxis qwtederda term wirqq ixbpsrmhss. Gqe dmw jodqes yems qqscusrazxis pi zimner q iqbmvgad iq uye nodredm tilm retgvizm. Hi cmqmntehae tilmw xruplae ibunivazxis pew fxsveexes fvspugeie exe qwgaxehae ess bmgoe hes yeneexssmw qozxentew, a zexudida ajirqgi uye zadmidmhi izjmnuxe dq teieekezw heepymnvenfiw pmve sqvim mtveomedmw. S saq hae gectsiidew, o oliids hae jpodiw supzeexvee i e sqrwaoes da zinfs gozxva a vssfs waa etezew axkyne hss bvezqvis cyi asyerpeq oe zmavertqw im nywcm hi ahirtgves ms er xmzrq. Epey hes yevahmphmw rafyvauw, es hmegqrw tmqfey rss bivmuxim yivggplad res oyptgves q xvapmgoqw ynuges pi hirivezxis bevtqw ho yyrda. Hi ejtpodev oe ximbpss mrxissw da wydqwxe mwmafmgo mxi pmvxiomtad hi fqwxihems ospodmhoe re Ayivioe Pafmra, oeha piwturs oriveoi ymm stodxynuhedq yrioe he mtvezhir q gveegir osqo biwsae. Ixbiviyirtmv rohsw smfsrqw ha oypizevim pscmp, hazger ms woy he mgwmcm xvapmgiarel q gsnhivsmv goy sw hmfmtmrxee pscmmw sms epqres mpkuyew dmw qazimrmw texew qgems bsheysw naw gozigtmv goy ew caqynuhedqw uuq zmsuxemaw.";
-    int texto_len = strlen(texto);
+    printf("\t\t\t================================================");
+    printf("\n\t\t\t            CRIPTOGRAFIA - TRABALHO I           ");
+    printf("\n\t\t\t================================================");
+        
+    printf("\n\n\t\tINSIRA A MENSAGEM CIFRADA: ");
 
-    decifrarForcaBruta(texto, texto_len);
+    fgets(texto, MAX_SIZE, stdin);    
+
+    printf("\n\n\t\t\t================================================");
+
+    system("cls");
+
+    return texto;
+}
+
+// Verifica se o usuario ja possui a chave
+char* obterOpcao(){
+    static char opc[2];  // Definindo como static para evitar problemas de escopo
+
+    printf("\n\n\t\t\t================================================");
+
+    printf("\n\n\t\tJA SABE QUAL O VALOR DA CHAVE?");
+
+    printf("\n\n\t\t1 - SIM");
+    printf("\n\t\t2 - NAO");
+    printf("\n\t\t3 - SAIR");
+
+    printf("\n\n\t\tESCOLHA A OPCAO DESEJADA: ");
+
+    fgets(opc, sizeof(opc), stdin); 
+
+    printf("\n\n\t\t\t================================================");
+
+    system("cls");
+
+    return opc;
+}
+
+// Obtem a Chave para decifrar o texto
+char* obterChave() {
+    static char chave[10];  // Definindo como static para evitar problemas de escopo
+
+    printf("\n\n\t\t\t================================================");
+
+    printf("\n\n\t\tQUAL O VALOR DA CHAVE?");
+
+    fgets(chave, sizeof(chave), stdin); 
+
+    printf("\n\n\t\t\t================================================");
+
+    system("cls");
+
+    return chave;
+}
+
+// Função para decifrar o texto usando a cifra de Vigenère
+void decifrarVigenere(char texto[], char chave[]) {
+    int texto_len = strlen(texto);
+    int chave_len = strlen(chave);
+    char texto_decifrado[MAX_SIZE];
+    
+    for (int i = 0, j = 0; i < texto_len; i++) {
+        char letra = texto[i];
+        
+        if (isalpha(letra)) {
+            char base = isupper(letra) ? 'A' : 'a';
+            texto_decifrado[i] = ((toupper(letra) - toupper(chave[j]) + 26) % 26) + base;
+            j = (j + 1) % chave_len;
+        } else {
+            texto_decifrado[i] = letra;
+        }
+    }
+    texto_decifrado[texto_len] = '\0';
+    
+    system("cls");
+
+    printf("\t\t\t================================================");    
+    // Imprimir o resultado encontrado
+    printf("\n\n\t\tTEXTO DECIFRADO:\n\n%s\n", texto_decifrado);
+    printf("\n\t\t\t================================================"); 
+}
+
+int main() {    
+    system("cls");
+        
+    char *texto = obterMensagem();
+
+    char *opc = obterOpcao();
+
+    if (opc[0] == '1') {    
+        printf("TESTE");
+    } else if (opc[0] == '2') {            
+        decifrarForcaBruta(texto, strlen(texto)); 
+    } else if (opc[0] == '3') {     
+        printf("\n\n\t\t\t\t\tATE LOGO" );
+        printf("\n\n\t\t\t================================================");   
+    } else {
+        printf("\n\nOPCAO INVALIDA");
+        printf("\n\n\t\t\t================================================");
+    }
 
     return 0;
 }
-
