@@ -85,16 +85,14 @@ void decifrarForcaBruta(char texto[], int texto_len) {
 
     printf("\t\t\t================================================");
     // Mostrar a chave utilizada
-    printf("\n\n\t\tCHAVE UTILIZADA PARA DECIFRAR O TEXTO: %s\n", melhor_chave);
+    printf("\n\t\tCHAVE UTILIZADA PARA DECIFRAR O TEXTO: %s\n", melhor_chave);
     // Imprimir o melhor resultado encontrado
     printf("\n\n\t\tTEXTO DECIFRADO MAIS PROVAVEL:\n\n%s\n", melhor_decifrado);
     printf("\n\t\t\t================================================"); 
 }
 
 // Obtem a mensagem a ser decifrada
-char* obterMensagem(){
-    static char texto[MAX_SIZE]; // Definindo como static para evitar problemas de escopo
-    
+void obterMensagem(char texto[]) {
     printf("\t\t\t================================================");
     printf("\n\t\t\t            CRIPTOGRAFIA - TRABALHO I           ");
     printf("\n\t\t\t================================================");
@@ -106,13 +104,11 @@ char* obterMensagem(){
     printf("\n\n\t\t\t================================================");
 
     system("cls");
-
-    return texto;
 }
 
 // Verifica se o usuario ja possui a chave
-char* obterOpcao(){
-    static char opc[2];  // Definindo como static para evitar problemas de escopo
+char obterOpcao() {
+    char opc;  
 
     printf("\n\n\t\t\t================================================");
 
@@ -124,7 +120,7 @@ char* obterOpcao(){
 
     printf("\n\n\t\tESCOLHA A OPCAO DESEJADA: ");
 
-    fgets(opc, sizeof(opc), stdin); 
+    scanf(" %c", &opc); 
 
     printf("\n\n\t\t\t================================================");
 
@@ -133,25 +129,20 @@ char* obterOpcao(){
     return opc;
 }
 
-// Obtem a Chave para decifrar o texto
-char* obterChave() {
-    static char chave[10];  // Definindo como static para evitar problemas de escopo
-
+// Função para obter a chave do usuário
+void obterChave(char chave[]) {
     printf("\n\n\t\t\t================================================");
-
-    printf("\n\n\t\tQUAL O VALOR DA CHAVE?");
-
-    fgets(chave, sizeof(chave), stdin); 
-
+    
+    printf("\n\n\t\tQUAL O VALOR DA CHAVE? ");
+    scanf(" %[^\n]", chave);
+    
     printf("\n\n\t\t\t================================================");
-
+    
     system("cls");
-
-    return chave;
 }
 
-// Função para decifrar o texto usando a cifra de Vigenère
-void decifrarVigenere(char texto[], char chave[]) {
+// Função para decifrar o texto usando a chave
+void decifrarComChave(char texto[], char chave[]) {
     int texto_len = strlen(texto);
     int chave_len = strlen(chave);
     char texto_decifrado[MAX_SIZE];
@@ -180,15 +171,18 @@ void decifrarVigenere(char texto[], char chave[]) {
 int main() {    
     system("cls");
         
-    char *texto = obterMensagem();
+    char texto[MAX_SIZE];
+    obterMensagem(texto);
 
-    char *opc = obterOpcao();
+    char opc = obterOpcao();
 
-    if (opc[0] == '1') {    
-        printf("TESTE");
-    } else if (opc[0] == '2') {            
-        decifrarForcaBruta(texto, strlen(texto)); 
-    } else if (opc[0] == '3') {     
+    if (opc == '1') {    
+        char chave[11]; // 10 caracteres + '\0'
+        obterChave(chave); // Se o usuário conhece a chave, solicitamos a chave
+        decifrarComChave(texto, chave); // e deciframos o texto usando essa chave.
+    } else if (opc == '2') {            
+        decifrarForcaBruta(texto, strlen(texto)); // Se o usuário não conhece a chave, deciframos por força bruta.
+    } else if (opc == '3') {     
         printf("\n\n\t\t\t\t\tATE LOGO" );
         printf("\n\n\t\t\t================================================");   
     } else {
