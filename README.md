@@ -20,6 +20,19 @@ Este programa foi desenvolvido para decifrar mensagens cifradas usando a cifra d
 
 3. **Interface simples:** O programa possui uma interface de linha de comando com um menu intuitivo que orienta o usuário na escolha da opção desejada.
 
+## Screenshots
+
+- Cifrando
+    
+    ![Cifrando](assets/texto_cifrado.png)
+
+- Decifrando
+    
+    ![Inserindo mensagem](assets/decifrar_1.png)
+    ![Possui chave?](assets/decifrar_2.png)
+    ![Loading](assets/decifrar_3.png)
+    ![Decifrando](assets/texto_decifrado.png)
+
 ## Requisitos
 
 - Compilador GCC (ou outro compilador compatível com C)
